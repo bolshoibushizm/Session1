@@ -1,0 +1,66 @@
+﻿<Page x:Class="session1.pages.Product"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:session1.pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Product" Loaded="Page_Loaded">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <ComboBox Name="FilterBox" Width="150" SelectionChanged="FilterBox_SelectionChanged"></ComboBox>
+            <ComboBox Name="SortBox" Width="150" SelectionChanged="SortBox_SelectionChanged">
+                <ComboBoxItem Content="Все"></ComboBoxItem>
+                <ComboBoxItem Content="По убыванию"></ComboBoxItem>
+                <ComboBoxItem Content="По возрастанию"></ComboBoxItem>
+            </ComboBox>
+            <TextBox Name="SearchBox" TextChanged="SearchBox_TextChanged" Width="150"></TextBox>
+            <Button Name="Drop" Width="0" Visibility="Visible"></Button>
+            <TextBlock Name="countvalue"></TextBlock>
+        </StackPanel>
+        
+        <ListView Name="LV" Grid.Row="1" HorizontalAlignment="Center">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Button Name="Edit" Click="Edit_Click" Background="Transparent">
+                        <Border BorderThickness="1" BorderBrush="Black">
+
+                            <StackPanel Orientation="Horizontal"  Margin="10" Background="{Binding Color}">
+
+                                <Border BorderThickness="2" BorderBrush="Black">
+                                    <Image Width="150" Height="70" Source="{Binding source_image}"></Image>
+                                </Border>
+                                <Border BorderThickness="1" BorderBrush="Black"  Margin="30,0,30,0" Width="400">
+
+                                    <StackPanel Orientation="Vertical" Margin="30,0,0,0">
+                                        <TextBlock FontWeight="Bold" Text="{Binding ProductName }"></TextBlock>
+                                        <TextBlock Text="{Binding ProductDescription }"></TextBlock>
+                                        <TextBlock Text="{Binding GetManu }"></TextBlock>
+                                        <TextBlock Text="{Binding GetCost }"></TextBlock>
+                                        <TextBlock Text="{Binding ProductArticleNumber}"></TextBlock>
+                                        <TextBlock Text="{Binding UnitofMetrick}"></TextBlock>
+                                        <TextBlock Text="{Binding Provider}"></TextBlock>
+                                        <TextBlock Text="{Binding TypeProduct.NameCategory}"></TextBlock>
+                                        <TextBlock Text="{Binding MaxDiscount}"></TextBlock>
+
+                                    </StackPanel>
+                                </Border>
+                                <Border BorderThickness="1" BorderBrush="Black">
+                                    <TextBlock Text="{Binding GetInStock}" Width="80"></TextBlock>
+                                </Border>
+                                <Button Name="Delete" Visibility="{Binding ElementName=Drop, Path=Visibility}" Content="Удалить" Click="Delete_Click"></Button>
+
+                            </StackPanel>
+                        </Border>
+                    </Button>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

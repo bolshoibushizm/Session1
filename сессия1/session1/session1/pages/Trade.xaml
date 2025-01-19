@@ -1,0 +1,46 @@
+﻿<Page x:Class="session1.pages.Trade"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:session1.pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Trade">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <ComboBox Name="FilterBox"></ComboBox>
+            <ComboBox Name="SortBox"></ComboBox>
+            <TextBox Name="SearchBox"></TextBox>
+        </StackPanel>
+        <ListView Name="LV" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="1" BorderBrush="Black">
+                        <StackPanel Orientation="Horizontal">
+                            <Border BorderThickness="2">
+                                <Image Source="{Binding source_image}"></Image>
+                            </Border>
+                            <Border BorderThickness="1" BorderBrush="Black">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding ProductName }"></TextBlock>
+                                    <TextBlock Text="{Binding ProductDescription }"></TextBlock>
+                                    <TextBlock Text="{Binding ProductManufacturer }"></TextBlock>
+                                    <TextBlock Text="{Binding ProductCost }"></TextBlock>
+                                </StackPanel>
+                            </Border>
+                            <Border BorderThickness="1" BorderBrush="Black">
+                                <TextBlock> в наличии</TextBlock>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
